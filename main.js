@@ -2,6 +2,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const windowStateKeeper = require('electron-window-state')
 const readItem = require('./readItem');
+const updater = require('./updater');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -50,7 +51,13 @@ function createWindow () {
 }
 
 // Electron `app` is ready
-app.on('ready', createWindow)
+app.on('ready', () => {
+  // Create main window
+  mainWindow;
+
+  // Check for update after x seconds
+  setTimeout(updater.check, 2000)
+})
 
 // Quit when all windows are closed - (Not macOS - Darwin)
 app.on('window-all-closed', () => {
