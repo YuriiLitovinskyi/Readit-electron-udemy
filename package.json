@@ -1,0 +1,37 @@
+{
+  "name": "project_8",
+  "version": "1.0.1",
+  "description": "simple app tutorial",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec 'electron .'",
+    "reset": "git reset --hard",
+    "win": "electron-builder -w",
+    "build": "electron-builder -mwl",
+    "make-cert": "electron-builder create-self-signed-cert -p stackacademy"
+  },
+  "author": "Yurii Litovinskyi",
+  "license": "ISC",
+  "dependencies": {
+    "electron-window-state": "^5.0.3",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "electron": "^8.2.3",
+    "electron-builder": "^22.5.1"
+  },
+  "build": {
+    "appId": "electron tutorial",
+    "directories": {
+      "buildResources": "."
+    },
+    "win": {
+      "certificateFile": "private/stackacademy.pfx",
+      "publisherName": "stackacademy"
+    },
+    "linux": {
+      "category": "Network"
+    }
+  }
+}
